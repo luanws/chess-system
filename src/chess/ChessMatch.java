@@ -22,6 +22,13 @@ public class ChessMatch {
         return (ChessPiece) capturedPiece;
     }
 
+    private Piece makeMove(Position source, Position target) {
+        Piece piece = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(piece, target);
+        return capturedPiece;
+    }
+
     private void validadeSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
             throw new ChessException("There is piece on source position");
